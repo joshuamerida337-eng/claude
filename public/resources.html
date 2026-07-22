@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background-color:#FFFDF7;background-image:radial-gradient(circle, rgba(20,64,107,.13) 1.3px, transparent 1.3px);background-size:44px 44px;font-family:'Atkinson Hyperlegible',sans-serif}
+a{color:#14406B}a:hover{color:#0D2C4A}
+@media (max-width: 720px){
+  header, section[style*="padding: 72px 48px"], section[style*="padding: 0 48px 88px"], footer{ padding-left:20px !important; padding-right:20px !important; }
+  section[style*="padding: 72px 48px"]{ padding-top:44px !important; padding-bottom:36px !important; }
+  header{ padding-top:16px !important; padding-bottom:16px !important; flex-wrap:wrap !important; gap:12px !important; }
+  header > div:last-child{ gap:16px !important; flex-wrap:wrap !important; }
+  h1[style*="font-size: 54px"]{ font-size:34px !important; }
+  p[style*="font-size: 22px"]{ font-size:18px !important; }
+  div[style*="grid-template-columns: 1fr 1fr 1fr"]{ grid-template-columns:1fr !important; gap:18px !important; }
+  a[style*="padding: 28px 28px"]{ padding:22px 20px !important; }
+}
+</style>
+</helmet>
+
+<div data-screen-label="Resources" style="min-height:100vh;display:flex;flex-direction:column">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 48px;background:#14406B;flex-wrap:wrap;gap:12px">
+    <a href="./index.html" style="flex:none;white-space:nowrap;font-size:24px;font-weight:700;color:#fff;text-decoration:none">AI <span style="color:#F5B301">Free</span> for Boomers</a>
+    <div style="display:flex;align-items:center;gap:28px">
+      <a href="./resources.html" style="font-size:17px;color:#fff;font-weight:700;text-decoration:none">Resources</a>
+      <a href="./consulting.html" style="font-size:17px;color:#BBD0E6;text-decoration:none">1-on-1 Help</a>
+      <a href="./about.html" style="font-size:17px;color:#BBD0E6;text-decoration:none">About</a>
+      <a href="./index.html#signup" style="font-size:17px;font-weight:700;color:#1B2A3A;background:#F5B301;text-decoration:none;padding:11px 20px;border-radius:12px" style-hover="background:#E0A300">Download FREE AI Guide</a>
+    </div>
+  </header>
+
+  <section style="padding:72px 48px;text-align:center">
+    <div style="display:inline-block;font-size:15px;font-weight:700;color:#8A6D00;letter-spacing:.06em;text-transform:uppercase;background:#FDEBB8;border-radius:999px;padding:6px 16px;margin-bottom:18px">Free reading, plain English</div>
+    <h1 style="margin:0 auto 16px;font-size:54px;line-height:1.12;font-weight:700;color:#1B2A3A;max-width:760px;text-wrap:pretty">Resources for learning AI</h1>
+    <p style="margin:0 auto;font-size:22px;line-height:1.55;color:#44536A;max-width:600px;text-wrap:pretty">Short reads, no jargon, no homework. Pick whatever looks useful and start there.</p>
+  </section>
+
+  <section style="padding:0 48px 88px">
+    <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:start">
+      <sc-for list="{{ articles }}" as="art" hint-placeholder-count="6">
+        <a href="{{ art.href }}" style="display:flex;flex-direction:column;gap:10px;background:#fff;border:2px solid #EAD48A;border-radius:16px;padding:28px 28px;text-decoration:none;transition:transform .18s ease, box-shadow .18s ease" style-hover="transform:translateY(-4px);box-shadow:0 10px 26px rgba(138,109,0,.16)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:13px;font-weight:700;color:#8A6D00;background:#FDEBB8;border-radius:999px;padding:4px 12px;letter-spacing:.04em;text-transform:uppercase">{{ art.tag }}</span>
+            <span style="font-size:14px;color:#6B7A90">{{ art.time }}</span>
+          </div>
+          <div style="font-size:22px;line-height:1.3;font-weight:700;color:#1B2A3A;text-wrap:pretty">{{ art.title }}</div>
+          <div style="font-size:17px;line-height:1.55;color:#44536A">{{ art.summary }}</div>
+          <div style="margin-top:4px;font-size:15px;font-weight:700;color:#14406B;text-decoration:underline">Read it →</div>
+        </a>
+      </sc-for>
+    </div>
+    <div style="max-width:1080px;margin:36px auto 0;text-align:center;font-size:17px;color:#6B7A90">More added every week. Want the cheat sheet too? <a href="./index.html#signup" style="font-weight:700">It's on the home page.</a></div>
+  </section>
+
+  <footer style="margin-top:auto;padding:26px 48px;background:#14406B;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <div style="font-size:16px;color:#BBD0E6">© 2026 AI Free for Boomers</div>
+    <div style="font-size:16px;color:#BBD0E6">We don't sell your email. Ever.</div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // Replace these with your rewritten articles. href can point to a page or external link.
+  articles = [
+    { tag: "Getting started", time: "5 min read", title: "What is AI, in plain English?", summary: "No math, no buzzwords. What it actually is, what it's good at, and what it can't do.", href: "./articles/what-is-ai.html" },
+    { tag: "Getting started", time: "4 min read", title: "Your first conversation with AI", summary: "You type like you talk. What to ask first, and why there's no wrong way to do it.", href: "./articles/first-conversation.html" },
+    { tag: "Staying safe", time: "6 min read", title: "How to spot an AI scam", summary: "Anyone who rushes you or asks for gift cards is a scam. The full checklist, one page.", href: "./articles/spot-an-ai-scam.html" },
+    { tag: "Staying safe", time: "4 min read", title: "What to never type into AI", summary: "Passwords, Social Security numbers, bank details. Everything else is fair game — here's why.", href: "./articles/what-to-never-type.html" },
+    { tag: "For your business", time: "7 min read", title: "Write a marketing email with AI", summary: "From blank page to send-ready in ten minutes, in your own voice — not a robot's.", href: "./articles/marketing-email.html" },
+    { tag: "Everyday life", time: "5 min read", title: "Recipes, travel, and health questions", summary: "The everyday stuff AI is quietly great at, and how to ask so you get useful answers.", href: "./articles/everyday-life.html" },
+    { tag: "Everyday life", time: "6 min read", title: "Using AI to navigate your relationships", summary: "A thinking partner for hard conversations — with your spouse, your kids, and your business contacts.", href: "./articles/relationships.html" },
+  ];
+  renderVals() {
+    return { articles: this.articles };
+  }
+}
+</script>
+</body>
+</html>

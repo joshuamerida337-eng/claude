@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="132" height="132" viewBox="0 0 132 132" role="img" aria-label="Placeholder headshot">
-  <!-- Placeholder for Fernando's headshot. Replace this file with a real
-       photo (e.g. public/fernando.jpg) and update the <img> src in
-       src/components/HomePage.astro. -->
-  <circle cx="66" cy="66" r="66" fill="#F2F6FB"/>
-  <circle cx="66" cy="52" r="22" fill="#C9D6E5"/>
-  <path d="M22 116c6-26 24-38 44-38s38 12 44 38a66 66 0 0 1-88 0z" fill="#C9D6E5"/>
-</svg>

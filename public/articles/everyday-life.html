@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background-color:#FFFDF7;background-image:radial-gradient(circle, rgba(20,64,107,.13) 1.3px, transparent 1.3px);background-size:44px 44px;font-family:'Atkinson Hyperlegible',sans-serif}
+a{color:#14406B}a:hover{color:#0D2C4A}
+@media (max-width: 720px){
+  header, footer, article{ padding-left:20px !important; padding-right:20px !important; }
+  header{ padding-top:16px !important; padding-bottom:16px !important; flex-wrap:wrap !important; gap:12px !important; }
+  h1[style*="font-size: 46px"]{ font-size:32px !important; }
+}
+</style>
+</helmet>
+
+<div data-screen-label="Article" style="min-height:100vh;display:flex;flex-direction:column">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 48px;background:#14406B;flex-wrap:wrap;gap:12px">
+    <a href="../index.html" style="flex:none;white-space:nowrap;font-size:24px;font-weight:700;color:#fff;text-decoration:none">AI <span style="color:#F5B301">Free</span> for Boomers</a>
+    <div style="display:flex;align-items:center;gap:28px">
+      <a href="../resources.html" style="font-size:17px;color:#BBD0E6;text-decoration:none">Resources</a>
+      <a href="../about.html" style="font-size:17px;color:#BBD0E6;text-decoration:none">About</a>
+    </div>
+  </header>
+
+  <article style="width:100%;max-width:720px;margin:0 auto;padding:64px 48px 88px;box-sizing:border-box">
+    <a href="../resources.html" style="display:inline-block;font-size:16px;font-weight:700;text-decoration:underline;margin-bottom:28px">← All resources</a>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+      <span style="font-size:13px;font-weight:700;color:#8A6D00;background:#FDEBB8;border-radius:999px;padding:4px 12px;letter-spacing:.04em;text-transform:uppercase">Everyday life</span>
+      <span style="font-size:14px;color:#6B7A90">5 min read</span>
+    </div>
+    <h1 style="margin:0 0 18px;font-size:46px;line-height:1.15;font-weight:700;color:#1B2A3A;text-wrap:pretty">Recipes, travel, and health questions</h1>
+    <p style="margin:0 0 34px;font-size:21px;line-height:1.6;color:#44536A;text-wrap:pretty">The everyday stuff AI is quietly great at, and how to ask so you get useful answers.</p>
+
+    <div style="display:flex;flex-direction:column;gap:22px;font-size:19px;line-height:1.7;color:#1B2A3A">
+      <p style="margin:0">Forget the science-fiction stuff. Where AI actually earns its keep is the small everyday questions — what's for dinner, where should we go in October, what did the doctor mean by that word. You type like you talk, and it answers like a patient friend who never gets tired of questions.</p>
+
+      <h2 style="margin:18px 0 0;font-size:28px;font-weight:700;color:#1B2A3A">Recipes: tell it what's in the fridge</h2>
+      <p style="margin:0">This is the easiest place to start. Tell AI what you have on hand — "I've got eggs, half an onion, and some leftover chicken" — and it will suggest a meal, walk you through the steps, and adjust for anything you can't eat.</p>
+      <p style="margin:0">Try these, word for word:</p>
+      <p style="margin:0">"I want an easy chicken dinner for one."<br>"What can I make with eggs and vegetables?"<br>"Give me a low-salt version of this recipe."<br>"Plan a week of simple dinners and make me the grocery list."</p>
+      <p style="margin:0">If a recipe looks too fussy, say "make it simpler." It will. You can ask as many times as you like — it never sighs.</p>
+
+      <h2 style="margin:18px 0 0;font-size:28px;font-weight:700;color:#1B2A3A">Travel: a planner that works for free</h2>
+      <p style="margin:0">Planning a trip means juggling a dozen browser tabs. AI does the juggling for you. Ask "help me plan a three-day trip to New Mexico" and you'll get an itinerary you can push back on: "less walking," "cheaper hotels," "what should I pack in October?"</p>
+      <p style="margin:0">One honest caution: AI's information isn't always up to the minute. Use it to build the plan, then double-check prices, hours, and reservations on the airline's or hotel's own website before you book anything.</p>
+
+      <h2 style="margin:18px 0 0;font-size:28px;font-weight:700;color:#1B2A3A">Health: great for understanding, wrong for deciding</h2>
+      <p style="margin:0">AI is genuinely good at explaining health things in plain language. "What is polymyalgia rheumatica?" "What are the common side effects of this medication?" "Give me questions to ask my cardiologist on Thursday." It turns doctor-speak into English, and it helps you walk into appointments prepared.</p>
+      <p style="margin:0">Think of it as a traffic light. Green: general questions — explaining a condition, building a meal plan for your diabetes, understanding a term on your test results. Yellow: anything where your doctor should be in the loop, like making sense of a specific test result. Red: never let it decide — whether your medication is right, whether that lump is fine, whether to skip the appointment. That's your doctor's job.</p>
+
+      <div style="background:#FFF6DE;border:2px solid #EAD48A;border-radius:14px;padding:20px 24px;font-size:18px;line-height:1.6;color:#44536A"><strong style="color:#8A6D00">Worth remembering:</strong> AI helps you understand your health — it never decides about your health. If it's important, confirm it with your doctor. And never type in your Social Security, insurance, or bank numbers.</div>
+
+      <h2 style="margin:18px 0 0;font-size:28px;font-weight:700;color:#1B2A3A">The trick that makes all of this work</h2>
+      <p style="margin:0">There's no magic phrasing. Ask the way you'd ask a person, then keep going: "explain that again," "make it shorter," "try a different version." Follow-up questions are the whole game — and there are no wrong ones.</p>
+
+      <h2 style="margin:18px 0 0;font-size:28px;font-weight:700;color:#1B2A3A">Where we got this</h2>
+      <p style="margin:0;font-size:17px;line-height:1.8;color:#44536A">
+        <a href="https://news.harvard.edu/gazette/story/2026/05/should-you-ask-chatgpt-for-medical-advice/">Harvard Gazette — Should you ask ChatGPT for medical advice?</a><br>
+        <a href="https://storypoint.com/resources/active-adult/ai-for-seniors/">StoryPoint — AI for Seniors</a><br>
+        <a href="https://www.seniorsguide.com/technology/how-seniors-can-use-chatgpt/">Seniors Guide — How Seniors Can Use ChatGPT</a><br>
+        <a href="https://pashootech.com/how-can-seniors-use-ai/">Pashootech — 12 Simple Everyday Ways Seniors Use AI</a><br>
+        <a href="https://www.ltcnews.com/articles/seniors-embracing-tech-keep-travel-affordable-safe-fun">LTC News — Seniors Embracing Tech for Travel</a>
+      </p>
+    </div>
+
+    <div style="margin-top:52px;background:#14406B;border-radius:16px;padding:30px 32px;text-align:center">
+      <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:8px">Want the free cheat sheet?</div>
+      <div style="font-size:17px;color:#BBD0E6;margin-bottom:18px">Five things to try today. No credit card, no catch.</div>
+      <a href="../index.html#signup" style="display:inline-block;font-size:17px;font-weight:700;color:#1B2A3A;background:#F5B301;text-decoration:none;padding:12px 24px;border-radius:12px" style-hover="background:#E0A300">Get it on the home page →</a>
+    </div>
+  </article>
+
+  <footer style="margin-top:auto;padding:26px 48px;background:#14406B;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <div style="font-size:16px;color:#BBD0E6">© 2026 AI Free for Boomers</div>
+    <div style="font-size:16px;color:#BBD0E6">We don't sell your email. Ever.</div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

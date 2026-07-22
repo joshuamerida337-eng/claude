@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background-color:#FFFDF7;background-image:radial-gradient(circle, rgba(20,64,107,.13) 1.3px, transparent 1.3px);background-size:44px 44px;font-family:'Atkinson Hyperlegible',sans-serif}
+a{color:#14406B}a:hover{color:#0D2C4A}
+@media (max-width: 720px){
+  header, footer, article{ padding-left:20px !important; padding-right:20px !important; }
+  header{ padding-top:16px !important; padding-bottom:16px !important; flex-wrap:wrap !important; gap:12px !important; }
+  h1[style*="font-size: 46px"]{ font-size:32px !important; }
+}
+</style>
+</helmet>
+
+<div data-screen-label="Article" style="min-height:100vh;display:flex;flex-direction:column">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 48px;background:#14406B;flex-wrap:wrap;gap:12px">
+    <a href="../index.html" style="flex:none;white-space:nowrap;font-size:24px;font-weight:700;color:#fff;text-decoration:none">AI <span style="color:#F5B301">Free</span> for Boomers</a>
+    <div style="display:flex;align-items:center;gap:28px">
+      <a href="../resources.html" style="font-size:17px;color:#BBD0E6;text-decoration:none">Resources</a>
+      <a href="../about.html" style="font-size:17px;color:#BBD0E6;text-decoration:none">About</a>
+    </div>
+  </header>
+
+  <article style="width:100%;max-width:720px;margin:0 auto;padding:64px 48px 88px;box-sizing:border-box">
+    <a href="../resources.html" style="display:inline-block;font-size:16px;font-weight:700;text-decoration:underline;margin-bottom:28px">← All resources</a>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+      <span style="font-size:13px;font-weight:700;color:#8A6D00;background:#FDEBB8;border-radius:999px;padding:4px 12px;letter-spacing:.04em;text-transform:uppercase">Getting started</span>
+      <span style="font-size:14px;color:#6B7A90">4 min read</span>
+    </div>
+    <h1 style="margin:0 0 18px;font-size:46px;line-height:1.15;font-weight:700;color:#1B2A3A;text-wrap:pretty">Your first conversation with AI</h1>
+    <p style="margin:0 0 34px;font-size:21px;line-height:1.6;color:#44536A;text-wrap:pretty">You type like you talk. What to ask first, and why there’s no wrong way to do it.</p>
+
+    <div style="display:flex;flex-direction:column;gap:22px;font-size:19px;line-height:1.7;color:#1B2A3A">
+      <p style="margin:0">Paste your rewritten article here. This is the first paragraph — keep it friendly and get to the point fast.</p>
+      <h2 style="margin:18px 0 0;font-size:28px;font-weight:700;color:#1B2A3A">A section heading</h2>
+      <p style="margin:0">More of the article. Short paragraphs read best — two to four sentences each.</p>
+      <div style="background:#FFF6DE;border:2px solid #EAD48A;border-radius:14px;padding:20px 24px;font-size:18px;line-height:1.6;color:#44536A"><strong style="color:#8A6D00">Worth remembering:</strong> use this yellow box for the one thing readers should take away.</div>
+      <h2 style="margin:18px 0 0;font-size:28px;font-weight:700;color:#1B2A3A">Another section heading</h2>
+      <p style="margin:0">And the rest of the article continues here. Delete any pieces you don't need.</p>
+    </div>
+
+    <div style="margin-top:52px;background:#14406B;border-radius:16px;padding:30px 32px;text-align:center">
+      <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:8px">Want the free cheat sheet?</div>
+      <div style="font-size:17px;color:#BBD0E6;margin-bottom:18px">Five things to try today. No credit card, no catch.</div>
+      <a href="../index.html#signup" style="display:inline-block;font-size:17px;font-weight:700;color:#1B2A3A;background:#F5B301;text-decoration:none;padding:12px 24px;border-radius:12px" style-hover="background:#E0A300">Get it on the home page →</a>
+    </div>
+  </article>
+
+  <footer style="margin-top:auto;padding:26px 48px;background:#14406B;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <div style="font-size:16px;color:#BBD0E6">© 2026 AI Free for Boomers</div>
+    <div style="font-size:16px;color:#BBD0E6">We don't sell your email. Ever.</div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

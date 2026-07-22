@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background-color:#FFFDF7;background-image:radial-gradient(circle, rgba(20,64,107,.13) 1.3px, transparent 1.3px);background-size:44px 44px;font-family:'Atkinson Hyperlegible',sans-serif}
+a{color:#14406B}a:hover{color:#0D2C4A}
+input::placeholder{color:#8395AB}
+@media (max-width: 720px){
+  header, footer, section{ padding-left:20px !important; padding-right:20px !important; }
+  header{ padding-top:16px !important; padding-bottom:16px !important; flex-wrap:wrap !important; gap:12px !important; }
+  h1[style*="font-size: 52px"]{ font-size:34px !important; }
+  div[style*="grid-template-columns: 1fr 1fr"]{ grid-template-columns:1fr !important; }
+}
+</style>
+</helmet>
+
+<div data-screen-label="Consulting" style="min-height:100vh;display:flex;flex-direction:column">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;padding:22px 48px;background:#14406B;flex-wrap:wrap;gap:12px">
+    <a href="./index.html" style="flex:none;white-space:nowrap;font-size:24px;font-weight:700;color:#fff;text-decoration:none">AI <span style="color:#F5B301">Free</span> for Boomers</a>
+    <div style="display:flex;align-items:center;gap:28px">
+      <a href="./resources.html" style="font-size:17px;color:#BBD0E6;text-decoration:none">Resources</a>
+      <a href="./consulting.html" style="font-size:17px;color:#fff;text-decoration:none;font-weight:700">1-on-1 Help</a>
+      <a href="./about.html" style="font-size:17px;color:#BBD0E6;text-decoration:none">About</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section style="padding:76px 48px 56px;text-align:center">
+    <span style="display:inline-block;font-size:14px;font-weight:700;color:#8A6D00;background:#FDEBB8;border-radius:999px;padding:5px 14px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px">1-on-1 Consulting</span>
+    <h1 style="margin:0 auto 18px;font-size:52px;line-height:1.15;font-weight:700;color:#1B2A3A;max-width:760px;text-wrap:pretty">Sit down with a real person and ask AI anything.</h1>
+    <p style="margin:0 auto 8px;font-size:21px;line-height:1.55;color:#44536A;max-width:640px;text-wrap:pretty">A private session, on video or in person, just to talk through what AI actually is, what it's doing in 2026, and whatever is making you nervous about it.</p>
+    <p style="margin:0 auto 32px;font-size:17px;color:#6B7A90;max-width:560px">No slides. No jargon. Bring every question you've been embarrassed to ask.</p>
+    <a href="#book" style="display:inline-block;font-size:19px;font-weight:700;padding:16px 30px;background:#F5B301;color:#1B2A3A;border-radius:12px;text-decoration:none" style-hover="background:#E0A300">Book a 1-on-1 session</a>
+  </section>
+
+  <!-- Who this is for / worries -->
+  <section style="padding:56px 48px;background:#FFF6DE">
+    <div style="max-width:1000px;margin:0 auto">
+      <h2 style="margin:0 0 8px;text-align:center;font-size:32px;font-weight:700;color:#1B2A3A">If any of this sounds like you</h2>
+      <p style="margin:0 0 32px;text-align:center;font-size:18px;color:#6B7A90">This is exactly what the sessions are for.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div style="background:#fff;border:2px solid #EAD48A;border-radius:14px;padding:24px 26px">
+          <div style="font-size:20px;font-weight:700;color:#1B2A3A;margin-bottom:8px">“I don't understand what it's even doing.”</div>
+          <div style="font-size:17px;line-height:1.55;color:#44536A">We'll open it up together and I'll show you, step by step, what happens when you type something in.</div>
+        </div>
+        <div style="background:#fff;border:2px solid #EAD48A;border-radius:14px;padding:24px 26px">
+          <div style="font-size:20px;font-weight:700;color:#1B2A3A;margin-bottom:8px">“It scares me a little, honestly.”</div>
+          <div style="font-size:17px;line-height:1.55;color:#44536A">That's a completely normal reaction. We'll talk through what's real, what's hype, and what's worth actually being careful about.</div>
+        </div>
+        <div style="background:#fff;border:2px solid #EAD48A;border-radius:14px;padding:24px 26px">
+          <div style="font-size:20px;font-weight:700;color:#1B2A3A;margin-bottom:8px">“Is it stealing my information?”</div>
+          <div style="font-size:17px;line-height:1.55;color:#44536A">We'll go over exactly what these tools can and can't see, and the handful of things you should never type into one.</div>
+        </div>
+        <div style="background:#fff;border:2px solid #EAD48A;border-radius:14px;padding:24px 26px">
+          <div style="font-size:20px;font-weight:700;color:#1B2A3A;margin-bottom:8px">“How is everyone actually using this in 2026?”</div>
+          <div style="font-size:17px;line-height:1.55;color:#44536A">I'll show you real, current examples — email, planning, family, small business — so it stops feeling abstract.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we cover -->
+  <section style="padding:64px 48px">
+    <div style="max-width:1000px;margin:0 auto">
+      <h2 style="margin:0 0 32px;text-align:center;font-size:32px;font-weight:700;color:#1B2A3A">What we'll actually talk about</h2>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;gap:18px;align-items:flex-start;padding:22px 24px;background:#F2F6FB;border-radius:14px">
+          <div style="flex:none;width:38px;height:38px;border-radius:50%;background:#14406B;color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center">1</div>
+          <div><div style="font-size:20px;font-weight:700;color:#1B2A3A;margin-bottom:4px">Where AI stands in 2026</div><div style="font-size:17px;line-height:1.55;color:#44536A">What's changed, what's just marketing, and what it means for someone like you — no tech background required.</div></div>
+        </div>
+        <div style="display:flex;gap:18px;align-items:flex-start;padding:22px 24px;background:#F2F6FB;border-radius:14px">
+          <div style="flex:none;width:38px;height:38px;border-radius:50%;background:#14406B;color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center">2</div>
+          <div><div style="font-size:20px;font-weight:700;color:#1B2A3A;margin-bottom:4px">Your specific worries, out loud</div><div style="font-size:17px;line-height:1.55;color:#44536A">Privacy, scams, job security, your grandkids' data — whatever's on your mind gets answered directly.</div></div>
+        </div>
+        <div style="display:flex;gap:18px;align-items:flex-start;padding:22px 24px;background:#F2F6FB;border-radius:14px">
+          <div style="flex:none;width:38px;height:38px;border-radius:50%;background:#14406B;color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center">3</div>
+          <div><div style="font-size:20px;font-weight:700;color:#1B2A3A;margin-bottom:4px">Hands-on, on your own device</div><div style="font-size:17px;line-height:1.55;color:#44536A">We open it up on your phone or computer and try it together — writing something real, asking a real question.</div></div>
+        </div>
+        <div style="display:flex;gap:18px;align-items:flex-start;padding:22px 24px;background:#F2F6FB;border-radius:14px">
+          <div style="flex:none;width:38px;height:38px;border-radius:50%;background:#14406B;color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center">4</div>
+          <div><div style="font-size:20px;font-weight:700;color:#1B2A3A;margin-bottom:4px">A plan for after</div><div style="font-size:17px;line-height:1.55;color:#44536A">You leave with two or three things to try on your own — nothing overwhelming, nothing you can't handle.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="book" style="padding:64px 48px;background:#14406B;text-align:center">
+    <div style="max-width:600px;margin:0 auto">
+      <h2 style="margin:0 0 10px;font-size:32px;font-weight:700;color:#fff">Book your session</h2>
+      <p style="margin:0 0 28px;font-size:18px;line-height:1.5;color:#BBD0E6">Tell me a little about what's on your mind, and I'll follow up to set a time — video call or in person if you're local.</p>
+      <div style="background:#FFFDF7;border-radius:20px;padding:32px 34px;text-align:left">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <input type="text" placeholder="Your name" value="{{ name }}" onChange="{{ onNameChange }}" style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:18px;padding:14px 16px;border:2px solid #C9D6E5;border-radius:12px;background:#fff;color:#1B2A3A">
+          <input type="email" placeholder="Your email address" value="{{ email }}" onChange="{{ onEmailChange }}" style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:18px;padding:14px 16px;border:2px solid #C9D6E5;border-radius:12px;background:#fff;color:#1B2A3A">
+          <textarea placeholder="What would you like to talk through? (e.g. &quot;I'm nervous about it,&quot; &quot;help with emails,&quot; &quot;is it safe?&quot;)" value="{{ note }}" onChange="{{ onNoteChange }}" rows="4" style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:18px;padding:14px 16px;border:2px solid #C9D6E5;border-radius:12px;background:#fff;color:#1B2A3A;resize:vertical"></textarea>
+          <button onClick="{{ onSubmit }}" style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:19px;font-weight:700;padding:16px 26px;background:#F5B301;color:#1B2A3A;border:none;border-radius:12px;cursor:pointer" style-hover="background:#E0A300">{{ submitLabel }}</button>
+        </div>
+        <div style="margin-top:14px;font-size:15px;color:#6B7A90">No pressure, no obligation. I'll just reach out to find a time that works.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:auto;padding:26px 48px;background:#14406B;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <div style="font-size:16px;color:#BBD0E6">© 2026 AI Free for Boomers</div>
+    <div style="font-size:16px;color:#BBD0E6">We don't sell your email. Ever.</div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { name: "", email: "", note: "", submitted: false };
+  renderVals() {
+    return {
+      name: this.state.name,
+      onNameChange: (e) => this.setState({ name: e.target.value }),
+      email: this.state.email,
+      onEmailChange: (e) => this.setState({ email: e.target.value }),
+      note: this.state.note,
+      onNoteChange: (e) => this.setState({ note: e.target.value }),
+      submitLabel: this.state.submitted ? "Request sent ✓" : "Send my request",
+      onSubmit: () => this.setState({ submitted: true }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
