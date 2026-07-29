@@ -6,6 +6,11 @@
   "main": "src/index.js",
   "compatibility_date": "2026-07-29",
   "compatibility_flags": ["nodejs_compat"],
+  // Regenerate dist/ as part of `wrangler deploy`, so the assets directory
+  // below always exists even if the CI build step is configured differently.
+  "build": {
+    "command": "npm run build"
+  },
   "assets": {
     // Built by `npm run build`, which copies public/ to dist/.
     "directory": "./dist",
