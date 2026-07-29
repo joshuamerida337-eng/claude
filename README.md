@@ -5,6 +5,10 @@ Production source for aifreeforboomers.com. Static site, deployed on Cloudflare 
 ## Layout
 
 ```
+wrangler.jsonc     Cloudflare Worker config — serves dist/ AND runs src/
+src/
+  index.js           Worker entry: routes /api/subscribe, serves everything else
+  subscribe.js       Klaviyo handler
 public/            the site itself (this is what ships)
   index.html         homepage — signup form, video, demo card, quiz
   about.html         founders
@@ -25,8 +29,26 @@ build.mjs          copies public/ to dist/
 npm run build      # copies public/ into dist/
 ```
 
-Cloudflare Pages settings: build command `npm run build`, output directory `dist`.
-The `functions/` directory is picked up automatically from the repo root.
+`wrangler.jsonc` points `main` at `src/index.js` and serves `dist/` as static
+assets. Both parts matter: without `main`, Cloudflare deploys the project as
+static assets only, the API endpoint does not exist, and the dashboard refuses
+to accept secrets with "Variables cannot be added to a Worker that only has
+static assets."
+
+Run it locally, exactly as it runs in production:
+
+```
+npm run build
+npx wrangler dev
+```
+
+## URLs
+
+Cloudflare serves these pages without the `.html` extension — `/about`, not
+`/about.html` — and 307-redirects the `.html` form to it. Internal links and
+`rel="canonical"` tags therefore point at the extensionless URL. Linking to
+`.html` still works but sends every visitor and crawler through a redirect,
+which is what Search Console reports as "Page with redirect".
 
 ## Forms → Klaviyo
 
@@ -47,7 +69,7 @@ carry `Quiz answers` and `Quiz result`.
 The API key is read from the environment — it is deliberately **not** in this
 repo, because anything in `public/` is downloadable by visitors.
 
-In the Cloudflare Pages dashboard: **Settings → Environment variables**, add
+In the Cloudflare dashboard for the Worker: **Settings → Environment variables**, add
 
 | Name | Value |
 |---|---|

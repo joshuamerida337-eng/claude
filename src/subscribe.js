@@ -1,11 +1,11 @@
 /**
- * POST /api/subscribe
+ * Handles POST /api/subscribe.
  *
  * Receives a form submission from the site and subscribes the person to a
  * Klaviyo list. This runs on Cloudflare's servers, not in the browser, so the
  * private Klaviyo API key is never exposed to visitors.
  *
- * Required environment variables (set in the Cloudflare Pages dashboard):
+ * Required Worker secrets / variables:
  *   KLAVIYO_API_KEY  - private API key, starts with "pk_"
  *   KLAVIYO_LIST_ID  - optional; defaults to the list below
  */
@@ -33,7 +33,7 @@ const json = (status, body) =>
 const clean = (value, max) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
 
-export async function onRequestPost({ request, env }) {
+export async function handleSubscribe(request, env) {
   const apiKey = env.KLAVIYO_API_KEY;
   if (!apiKey) {
     console.error("KLAVIYO_API_KEY is not set");

@@ -1,0 +1,14 @@
+{
+  // Deploys the static site in dist/ together with a small Worker that handles
+  // the form endpoint. Without "main" below, Cloudflare treats this project as
+  // static assets only and no server-side code (or secret) can run.
+  "name": "claude",
+  "main": "src/index.js",
+  "compatibility_date": "2026-07-29",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    // Built by `npm run build`, which copies public/ to dist/.
+    "directory": "./dist",
+    "binding": "ASSETS"
+  }
+}
