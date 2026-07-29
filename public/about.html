@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — AI Free for Boomers</title>
+<meta name="description" content="Why we offer free AI classes. Meet Joshua and Fernando, and read the honest reason this exists.">
+<link rel="canonical" href="https://aifreeforboomers.com/about.html">
+<meta property="og:title" content="About — AI Free for Boomers">
+<meta property="og:description" content="Why we offer free AI classes. Meet Joshua and Fernando, and read the honest reason this exists.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aifreeforboomers.com/about.html">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -24,12 +32,11 @@ a{color:#14406B}a:hover{color:#0D2C4A}
   p[style*="font-size: 23px"]{ font-size: 18px !important; }
   div[style*="grid-template-columns: 1fr 1fr 1fr"]{ grid-template-columns: 1fr !important; gap: 14px !important; }
   div[style*="grid-template-columns: 1fr 1fr 1fr"] > div{ padding: 20px 20px !important; }
-  div[style*="max-width: 820px"][style*="border: 2px dashed"]{ flex-direction: column !important; text-align: center !important; padding: 22px 20px !important; gap: 14px !important; }
-  .founder-card{ flex-direction: column !important; text-align: center !important; gap: 16px !important; padding: 24px 20px !important; }
-  .founder-card > div{ width: 100% !important; }
-  .founder-card > div[style*="width:132px"]{ width: 110px !important; height: 110px !important; margin: 0 auto !important; }
-  .founder-dot{ display: none !important; }
-  section[style*="padding: 0 48px 40px"]{ padding: 0 20px 32px !important; }
+  section[data-founders]{ padding: 0 20px 32px !important; }
+  section[data-founders] > div{ gap: 32px !important; }
+  section[data-founders] > div > div{ gap: 14px !important; align-items: flex-start !important; }
+  section[data-founders] img{ width: 84px !important; height: 84px !important; }
+  section[data-founders] div[style*="font-size: 20px"]{ font-size: 17px !important; line-height: 1.55 !important; }
   section[style*="padding: 40px 48px 24px"]{ padding: 32px 20px 20px !important; }
 }
 </style>
@@ -100,22 +107,18 @@ a{color:#14406B}a:hover{color:#0D2C4A}
     <p style="margin:0 auto;font-size: 23px;line-height:1.55;color:#44536A;max-width:640px;text-wrap:pretty">Hi, I'm Josh. I'm 19 years old. Here's the honest reason this exists.</p>
   </section>
 
-  <!-- Photo + intro -->
-  <section style="padding: 0 48px 40px">
-    <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:18px">
-      <div class="founder-card" style="display:flex;gap:24px;align-items:center;background:#FFFDF7;border-radius:18px;padding:28px 30px">
-        <div class="founder-dot" style="flex:none;width:14px;height:14px;border-radius:50%;background:#14406B"></div>
-        <div style="flex:none;width:132px;height:132px">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="about-josh-photo" shape="circle" placeholder="Your photo" hint-size="132px,132px" style="width:132px;height:132px"></x-import>
-        </div>
-        <div style="font-size:19px;line-height:1.6;color:#44536A"><span style="font-weight:700;color:#1B2A3A">Joshua — Founder.</span> 19. Grew up with this stuff. Learned it the same way you're about to — one curious and confused question at a time.</div>
+  <!-- Founders -->
+  <section data-founders style="padding: 0 48px 40px">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+      <div style="display:flex;gap:26px;align-items:center">
+        <div style="flex:none;width:14px;height:14px;border-radius:999px;background:#14406B"></div>
+        <img src="./uploads/logo-mark.png" alt="AI Free for Boomers logo" data-slot="about-josh-photo" style="width:132px;height:132px;flex:none;border-radius:999px;object-fit:contain;background:#fff;border:2px solid #EAD48A;padding:10px;box-sizing:border-box">
+        <div style="font-size:20px;line-height:1.6;color:#44536A"><span style="font-weight:700;color:#1B2A3A">Joshua — Founder.</span> 19. Grew up with this stuff. Learned it the same way you're about to — one curious and confused question at a time.</div>
       </div>
-      <div class="founder-card" style="display:flex;gap:24px;align-items:center;background:#FFFDF7;border-radius:18px;padding:28px 30px">
-        <div class="founder-dot" style="flex:none;width:14px;height:14px;border-radius:50%;background:#F5B301"></div>
-        <div style="flex:none;width:132px;height:132px">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="about-fernando-photo" shape="circle" placeholder="Your photo" hint-size="132px,132px" style="width:132px;height:132px"></x-import>
-        </div>
-        <div style="font-size:19px;line-height:1.6;color:#44536A"><span style="font-weight:700;color:#1B2A3A">Fernando — Co-Founder.</span> I've taught AI to business owners, retirees, and my own relatives. Here's my rule: if you're confused, I explained it badly. That's on me. We go one step at a time, and we go at your speed.</div>
+      <div style="display:flex;gap:26px;align-items:center">
+        <div style="flex:none;width:14px;height:14px;border-radius:999px;background:#F5B301"></div>
+        <img src="./uploads/logo-mark.png" alt="AI Free for Boomers logo" data-slot="about-fernando-photo" style="width:132px;height:132px;flex:none;border-radius:999px;object-fit:contain;background:#fff;border:2px solid #EAD48A;padding:10px;box-sizing:border-box">
+        <div style="font-size:20px;line-height:1.6;color:#44536A"><span style="font-weight:700;color:#1B2A3A">Fernando — Co-Founder.</span> I've taught AI to business owners, retirees, and my own relatives. Here's my rule: if you're confused, I explained it badly. That's on me. We go one step at a time, and we go at your speed.</div>
       </div>
     </div>
   </section>
@@ -168,5 +171,6 @@ a{color:#14406B}a:hover{color:#0D2C4A}
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script></script>
 </body>
 </html>
