@@ -168,6 +168,9 @@ input::placeholder{color:#8395AB}
       <input type="email" placeholder="Your email address" value="{{ email }}" onChange="{{ onEmailChange }}" style="flex:1;min-width:0;font-family:'Atkinson Hyperlegible',sans-serif;font-size:19px;padding:16px 18px;border:2px solid #14406B;border-radius:12px;background:#fff;color:#1B2A3A">
       <button onClick="{{ onSignup }}" style="flex:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:19px;font-weight:700;padding:16px 26px;background:#F5B301;color:#1B2A3A;border:none;border-radius:12px;cursor:pointer" style-hover="background:#E0A300">{{ signupLabel }}</button>
     </div>
+    <sc-if value="{{ signupError }}" hint-placeholder-val="{{ false }}">
+      <div role="alert" style="max-width:560px;margin:12px auto 0;font-size:17px;font-weight:700;color:#B3261E">{{ signupError }}</div>
+    </sc-if>
     <div style="margin-top:14px;font-size:17px;color:#6B7A90">“5 Things You Can Ask AI Today” — one page.&nbsp;</div>
 
     <div style="max-width:640px;margin:32px auto 0;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 8px 28px rgba(20,64,107,.08);background:#000">
@@ -237,6 +240,9 @@ input::placeholder{color:#8395AB}
               <input type="email" placeholder="Your email address" value="{{ quizEmail }}" onChange="{{ onQuizEmailChange }}" style="flex:1;min-width:0;font-family:'Atkinson Hyperlegible',sans-serif;font-size:18px;padding:14px 16px;border:2px solid #14406B;border-radius:12px;background:#fff;color:#1B2A3A">
               <button onClick="{{ onQuizSignup }}" style="flex:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:18px;font-weight:700;padding:14px 22px;background:#F5B301;color:#1B2A3A;border:none;border-radius:12px;cursor:pointer" style-hover="background:#E0A300">{{ quizSignupLabel }}</button>
             </div>
+            <sc-if value="{{ quizError }}" hint-placeholder-val="{{ false }}">
+              <div role="alert" style="margin-top:12px;font-size:16px;font-weight:700;color:#B3261E">{{ quizError }}</div>
+            </sc-if>
             <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center">
               <div style="font-size:15px;color:#6B7A90">We'll send your cheat sheet and nothing else. Promise.</div>
               <button onClick="{{ closeQuizPopup }}" style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:15px;font-weight:700;background:none;border:none;color:#14406B;cursor:pointer;padding:0;text-decoration:underline">Close</button>
@@ -307,6 +313,9 @@ input::placeholder{color:#8395AB}
             <input type="email" placeholder="Your email address" value="{{ quizEmail }}" onChange="{{ onQuizEmailChange }}" style="flex:1;min-width:0;font-family:'Atkinson Hyperlegible',sans-serif;font-size:18px;padding:14px 16px;border:2px solid #14406B;border-radius:12px;background:#fff;color:#1B2A3A">
             <button onClick="{{ onQuizSignup }}" style="flex:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:18px;font-weight:700;padding:14px 22px;background:#F5B301;color:#1B2A3A;border:none;border-radius:12px;cursor:pointer" style-hover="background:#E0A300">{{ quizSignupLabel }}</button>
           </div>
+          <sc-if value="{{ quizError }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="margin-top:12px;font-size:16px;font-weight:700;color:#B3261E">{{ quizError }}</div>
+          </sc-if>
           <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center">
             <div style="font-size:15px;color:#6B7A90">We'll send your cheat sheet and nothing else. Promise.</div>
             <button onClick="{{ quizRestart }}" style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:15px;font-weight:700;background:none;border:none;color:#14406B;cursor:pointer;padding:0;text-decoration:underline">Start over</button>
@@ -345,7 +354,29 @@ input::placeholder{color:#8395AB}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;audience&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;business-owner&quot;,&quot;boomer&quot;,&quot;adult-kid&quot;],&quot;default&quot;:&quot;boomer&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;showAnnouncement&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;quizAsPopup&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Quiz popup&quot;},&quot;popupDelaySeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:10,&quot;min&quot;:0,&quot;max&quot;:15,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Quiz popup&quot;}}">
 class Component extends DCLogic {
-  state = { email: "", signedUp: false, quizStep: 0, quizAnswers: [], quizEmail: "", quizSignedUp: false, popupOpen: false, popupDismissed: false, demoQ: "", demoA: "", demoAShown: false, revealed: [false, false, false] };
+  state = { email: "", signedUp: false, signupBusy: false, signupError: "", quizStep: 0, quizAnswers: [], quizEmail: "", quizSignedUp: false, quizBusy: false, quizError: "", popupOpen: false, popupDismissed: false, demoQ: "", demoA: "", demoAShown: false, revealed: [false, false, false] };
+
+  // Sends an email to /api/subscribe, which forwards it to Klaviyo server-side.
+  // Resolves to an error message, or "" when the signup succeeded.
+  async subscribe(payload) {
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(payload.email.trim())) {
+      return "Please enter a valid email address.";
+    }
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        return data.error || "Something went wrong. Please try again.";
+      }
+      return "";
+    } catch {
+      return "Couldn't reach the server. Please try again.";
+    }
+  }
 
   demos = [
     { q: "Here are last month's sales — what can I do to boost them?", a: "Three things jump out: your Tuesdays are dead, your top seller is underpriced, and repeat customers drop off after 60 days. Here's a fix for each…" },
@@ -445,8 +476,14 @@ class Component extends DCLogic {
       isBizCopy: audience === "business-owner",
       email: this.state.email,
       onEmailChange: (e) => this.setState({ email: e.target.value }),
-      signupLabel: this.state.signedUp ? "You're on the list ✓" : "Sign Me Up",
-      onSignup: () => this.setState({ signedUp: true }),
+      signupLabel: this.state.signedUp ? "You're on the list ✓" : this.state.signupBusy ? "Sending…" : "Sign Me Up",
+      signupError: this.state.signupError,
+      onSignup: async () => {
+        if (this.state.signupBusy || this.state.signedUp) return;
+        this.setState({ signupBusy: true, signupError: "" });
+        const error = await this.subscribe({ email: this.state.email, source: "homepage-hero" });
+        this.setState({ signupBusy: false, signupError: error, signedUp: !error });
+      },
 
       demoQ: this.state.demoQ,
       demoA: this.state.demoA,
@@ -488,8 +525,24 @@ class Component extends DCLogic {
       resultBody: result.body || "",
       quizEmail: this.state.quizEmail,
       onQuizEmailChange: (e) => this.setState({ quizEmail: e.target.value }),
-      quizSignupLabel: this.state.quizSignedUp ? "You're on the list ✓" : "Send my cheat sheet",
-      onQuizSignup: () => this.setState({ quizSignedUp: true }),
+      quizSignupLabel: this.state.quizSignedUp ? "You're on the list ✓" : this.state.quizBusy ? "Sending…" : "Send my cheat sheet",
+      quizError: this.state.quizError,
+      onQuizSignup: async () => {
+        if (this.state.quizBusy || this.state.quizSignedUp) return;
+        this.setState({ quizBusy: true, quizError: "" });
+        // Store the readable answer text, not the option index, so the list is
+        // segmentable without needing this file to decode it.
+        const answers = this.state.quizAnswers.map((choice, i) =>
+          this.quiz[i] ? this.quiz[i].q + " → " + this.quiz[i].opts[choice] : ""
+        );
+        const error = await this.subscribe({
+          email: this.state.quizEmail,
+          source: "homepage-quiz",
+          quizAnswers: answers,
+          quizResult: result.title || "",
+        });
+        this.setState({ quizBusy: false, quizError: error, quizSignedUp: !error });
+      },
 
       introVideoUrl: this.state.introVideoUrl,
       introVideoEmpty: !this.state.introVideoUrl,

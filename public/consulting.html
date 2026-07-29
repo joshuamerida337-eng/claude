@@ -114,6 +114,9 @@ input::placeholder{color:#8395AB}
           <textarea placeholder="What would you like to talk through? (e.g. &quot;I'm nervous about it,&quot; &quot;help with emails,&quot; &quot;is it safe?&quot;)" value="{{ note }}" onChange="{{ onNoteChange }}" rows="4" style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:18px;padding:14px 16px;border:2px solid #C9D6E5;border-radius:12px;background:#fff;color:#1B2A3A;resize:vertical"></textarea>
           <button onClick="{{ onSubmit }}" style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:19px;font-weight:700;padding:16px 26px;background:#F5B301;color:#1B2A3A;border:none;border-radius:12px;cursor:pointer" style-hover="background:#E0A300">{{ submitLabel }}</button>
         </div>
+        <sc-if value="{{ error }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="margin-top:12px;font-size:16px;font-weight:700;color:#B3261E">{{ error }}</div>
+        </sc-if>
         <div style="margin-top:14px;font-size:15px;color:#6B7A90">No pressure, no obligation. I'll just reach out to find a time that works.</div>
       </div>
     </div>
@@ -129,7 +132,7 @@ input::placeholder{color:#8395AB}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { name: "", email: "", note: "", submitted: false };
+  state = { name: "", email: "", note: "", submitted: false, busy: false, error: "" };
   renderVals() {
     return {
       name: this.state.name,
@@ -138,8 +141,36 @@ class Component extends DCLogic {
       onEmailChange: (e) => this.setState({ email: e.target.value }),
       note: this.state.note,
       onNoteChange: (e) => this.setState({ note: e.target.value }),
-      submitLabel: this.state.submitted ? "Request sent ✓" : "Send my request",
-      onSubmit: () => this.setState({ submitted: true }),
+      submitLabel: this.state.submitted ? "Request sent ✓" : this.state.busy ? "Sending…" : "Send my request",
+      error: this.state.error,
+      onSubmit: async () => {
+        if (this.state.busy || this.state.submitted) return;
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(this.state.email.trim())) {
+          this.setState({ error: "Please enter a valid email address." });
+          return;
+        }
+        this.setState({ busy: true, error: "" });
+        try {
+          const res = await fetch("/api/subscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: this.state.email,
+              name: this.state.name,
+              note: this.state.note,
+              source: "consulting",
+            }),
+          });
+          if (!res.ok) {
+            const data = await res.json().catch(() => ({}));
+            this.setState({ busy: false, error: data.error || "Something went wrong. Please try again." });
+            return;
+          }
+          this.setState({ busy: false, submitted: true });
+        } catch {
+          this.setState({ busy: false, error: "Couldn't reach the server. Please try again." });
+        }
+      },
     };
   }
 }
