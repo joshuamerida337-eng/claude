@@ -33,13 +33,40 @@ const json = (status, body) =>
 const clean = (value, max) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
 
+/**
+ * Finds the Klaviyo key among the Worker's variables.
+ *
+ * Pasting the variable name into the dashboard can leave a trailing space or a
+ * different case. The name then looks right on screen but no longer matches
+ * env.KLAVIYO_API_KEY, which is invisible from the outside, so match loosely
+ * rather than fail on something nobody can see.
+ */
+function findApiKey(env) {
+  if (typeof env.KLAVIYO_API_KEY === "string" && env.KLAVIYO_API_KEY.trim()) {
+    return env.KLAVIYO_API_KEY.trim();
+  }
+  for (const [name, value] of Object.entries(env)) {
+    if (typeof value !== "string") continue;
+    if (name.trim().toUpperCase().replace(/[\s-]/g, "_") === "KLAVIYO_API_KEY") {
+      return value.trim();
+    }
+  }
+  return null;
+}
+
 export async function handleSubscribe(request, env) {
   // The short codes below are diagnostic: they say why a signup failed without
   // revealing anything secret, so a failure can be identified from the browser.
-  const apiKey = env.KLAVIYO_API_KEY;
+  const apiKey = findApiKey(env);
   if (!apiKey) {
-    console.error("KLAVIYO_API_KEY is not set on this Worker");
-    return json(500, { error: "Signup is not configured yet. (E-NOKEY)" });
+    // Report which variables the Worker can actually see — names only, never
+    // values — because a secret that was saved under a slightly different name
+    // looks correct in the dashboard and is otherwise impossible to spot.
+    const names = Object.keys(env).filter((k) => typeof env[k] === "string");
+    console.error("No Klaviyo key found. Variables present:", names);
+    return json(500, {
+      error: `Signup is not configured yet. (E-NOKEY: saw [${names.join(", ") || "none"}])`,
+    });
   }
   if (!apiKey.startsWith("pk_")) {
     console.error("KLAVIYO_API_KEY is set but is not a private key");
