@@ -41,6 +41,49 @@ const clean = (value, max) =>
  * env.KLAVIYO_API_KEY, which is invisible from the outside, so match loosely
  * rather than fail on something nobody can see.
  */
+/** Pulls the human-readable reason out of a Klaviyo error body. */
+function describe(body) {
+  try {
+    const parsed = JSON.parse(body);
+    const first = parsed.errors && parsed.errors[0];
+    if (!first) return "";
+    const where = first.source && first.source.pointer ? ` at ${first.source.pointer}` : "";
+    return String(first.detail || first.title || "").slice(0, 160) + where;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Stores the name and the signup context on the profile.
+ *
+ * This runs after the subscription and is deliberately best-effort: the email
+ * is already captured by that point, so a failure here is logged and swallowed
+ * rather than shown to the visitor as a failed signup.
+ */
+async function writeProfileDetails(apiKey, email, firstName, properties) {
+  const attributes = { email, properties };
+  if (firstName) attributes.first_name = firstName;
+
+  try {
+    const res = await fetch("https://a.klaviyo.com/api/profile-import/", {
+      method: "POST",
+      headers: {
+        Authorization: `Klaviyo-API-Key ${apiKey}`,
+        revision: KLAVIYO_REVISION,
+        "Content-Type": "application/json",
+        accept: "application/vnd.api+json",
+      },
+      body: JSON.stringify({ data: { type: "profile", attributes } }),
+    });
+    if (!res.ok) {
+      console.error("Could not store profile details", res.status, await res.text());
+    }
+  } catch (err) {
+    console.error("Could not store profile details", err);
+  }
+}
+
 function findApiKey(env) {
   if (typeof env.KLAVIYO_API_KEY === "string" && env.KLAVIYO_API_KEY.trim()) {
     return env.KLAVIYO_API_KEY.trim();
@@ -104,17 +147,18 @@ export async function handleSubscribe(request, env) {
   const result = clean(payload.quizResult, 300);
   if (result) properties["Quiz result"] = result;
 
+  const firstName = clean(payload.name, 100);
+
+  // The subscribe endpoint accepts only identifiers and consent on a profile.
+  // Names and custom properties are rejected here, so they are written
+  // separately below once the subscription itself has succeeded.
   const profile = {
     type: "profile",
     attributes: {
       email,
-      properties,
       subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } },
     },
   };
-
-  const firstName = clean(payload.name, 100);
-  if (firstName) profile.attributes.first_name = firstName;
 
   const body = {
     data: {
@@ -156,9 +200,20 @@ export async function handleSubscribe(request, env) {
     const detail = await response.text();
     console.error("Klaviyo rejected the request", response.status, detail);
     // 401 = key not accepted, 403 = key lacks the required scopes,
-    // 404 = list id not found, 400 = payload rejected.
-    return json(502, { error: `Could not sign you up. (E-${response.status})` });
+    // 404 = list id not found, 400 = payload rejected. Klaviyo explains a
+    // rejection in the body, so pass that reason along rather than making the
+    // cause guesswork from outside.
+    return json(502, {
+      error: `Could not sign you up. (E-${response.status}${
+        describe(detail) ? ": " + describe(detail) : ""
+      })`,
+    });
   }
+
+  // The subscription succeeded, which is what matters. Attaching the name and
+  // the source/quiz context is a separate call, and a failure there must not
+  // turn a captured email into an error for the visitor.
+  await writeProfileDetails(apiKey, email, firstName, properties);
 
   return json(200, { ok: true });
 }
