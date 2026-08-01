@@ -34,10 +34,16 @@ const clean = (value, max) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
 
 export async function handleSubscribe(request, env) {
+  // The short codes below are diagnostic: they say why a signup failed without
+  // revealing anything secret, so a failure can be identified from the browser.
   const apiKey = env.KLAVIYO_API_KEY;
   if (!apiKey) {
-    console.error("KLAVIYO_API_KEY is not set");
-    return json(500, { error: "Signup is not configured yet." });
+    console.error("KLAVIYO_API_KEY is not set on this Worker");
+    return json(500, { error: "Signup is not configured yet. (E-NOKEY)" });
+  }
+  if (!apiKey.startsWith("pk_")) {
+    console.error("KLAVIYO_API_KEY is set but is not a private key");
+    return json(500, { error: "Signup is not configured yet. (E-NOTPRIVATE)" });
   }
 
   let payload;
@@ -115,14 +121,16 @@ export async function handleSubscribe(request, env) {
     );
   } catch (err) {
     console.error("Klaviyo request failed", err);
-    return json(502, { error: "Could not reach the mailing list. Try again." });
+    return json(502, { error: "Could not reach the mailing list. (E-NET)" });
   }
 
   // Klaviyo returns 202 Accepted on success, with an empty body.
   if (!response.ok) {
     const detail = await response.text();
     console.error("Klaviyo rejected the request", response.status, detail);
-    return json(502, { error: "Could not sign you up. Try again." });
+    // 401 = key not accepted, 403 = key lacks the required scopes,
+    // 404 = list id not found, 400 = payload rejected.
+    return json(502, { error: `Could not sign you up. (E-${response.status})` });
   }
 
   return json(200, { ok: true });
