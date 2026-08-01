@@ -60,7 +60,7 @@ Three forms submit to `POST /api/subscribe`:
 | Homepage quiz result | email + the three question/answer pairs + computed result |
 | Consulting booking | email, name, note |
 
-All land on Klaviyo list **`Y3RxhC`**. Each profile gets a `Signup source`
+All land on Klaviyo list **`UsZLgE`**. Each profile gets a `Signup source`
 property so the three can be segmented apart, and quiz signups additionally
 carry `Quiz answers` and `Quiz result`.
 
@@ -74,7 +74,7 @@ In the Cloudflare dashboard for the Worker: **Settings → Environment variables
 | Name | Value |
 |---|---|
 | `KLAVIYO_API_KEY` | a **private** Klaviyo key, starts with `pk_` |
-| `KLAVIYO_LIST_ID` | optional — overrides the default `Y3RxhC` |
+| `KLAVIYO_LIST_ID` | optional — overrides the default `UsZLgE` |
 
 Create the private key in Klaviyo under **Settings → Account → API Keys**. It
 needs write access to profiles and list subscriptions. Do not use the public

@@ -10,7 +10,7 @@
  *   KLAVIYO_LIST_ID  - optional; defaults to the list below
  */
 
-const DEFAULT_LIST_ID = "Y3RxhC";
+const DEFAULT_LIST_ID = "UsZLgE";
 const KLAVIYO_REVISION = "2024-10-15";
 
 // Only these sources are accepted, so the endpoint can't be used to write
@@ -33,14 +33,6 @@ const json = (status, body) =>
 const clean = (value, max) =>
   typeof value === "string" ? value.trim().slice(0, max) : "";
 
-/**
- * Finds the Klaviyo key among the Worker's variables.
- *
- * Pasting the variable name into the dashboard can leave a trailing space or a
- * different case. The name then looks right on screen but no longer matches
- * env.KLAVIYO_API_KEY, which is invisible from the outside, so match loosely
- * rather than fail on something nobody can see.
- */
 /** Pulls the human-readable reason out of a Klaviyo error body. */
 function describe(body) {
   try {
@@ -84,6 +76,14 @@ async function writeProfileDetails(apiKey, email, firstName, properties) {
   }
 }
 
+/**
+ * Finds the Klaviyo key among the Worker's variables.
+ *
+ * Pasting the variable name into the dashboard can leave a trailing space or a
+ * different case. The name then looks right on screen but no longer matches
+ * env.KLAVIYO_API_KEY, which is invisible from the outside, so match loosely
+ * rather than fail on something nobody can see.
+ */
 function findApiKey(env) {
   if (typeof env.KLAVIYO_API_KEY === "string" && env.KLAVIYO_API_KEY.trim()) {
     return env.KLAVIYO_API_KEY.trim();
