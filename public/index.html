@@ -134,6 +134,41 @@ input::placeholder{color:#8395AB}
 
 <div data-screen-label="Homepage" style="min-height:100vh;display:flex;flex-direction:column">
 
+  <!--
+    Crawler-readable copy of the quiz, demo, and trust-question content.
+    The real versions above are filled in by support.js at runtime, so a
+    crawler that doesn't execute JavaScript (GPTBot and similar) sees
+    literal "{{ }}" placeholders instead of this text. Everything here is
+    fixed, enumerable content (all quiz questions/results, all demo Q&As,
+    all trust answers) duplicated as plain static text. aria-hidden keeps
+    screen readers from announcing it twice, since sighted and
+    screen-reader users already get the real interactive version.
+  -->
+  <div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">
+    <h2>Questions AI can answer</h2>
+    <p>Here are last month's sales — what can I do to boost them? Three things jump out: your Tuesdays are dead, your top seller is underpriced, and repeat customers drop off after 60 days. Here's a fix for each…</p>
+    <p>Analyze my business — where are my bottlenecks? Based on what you've told me, scheduling is eating your week. You're the only one who can approve jobs. Here are two ways to hand that off…</p>
+    <p>Rewrite my brand kit so it sounds like me, not a robot. Done — same colors and logo, but the words now sound like a real person: "Family-run since 1987. We answer the phone."…</p>
+    <p>Write a friendly reply to this unhappy customer review. Thank you for letting us know — you're right, and we're sorry we missed the mark. Come back this week and the repair is on us…</p>
+    <p>Turn my messy notes into a quote I can send this customer. Here's a clean, professional quote: labor, materials, and timeline laid out line by line — ready to email…</p>
+    <p>Write this month's newsletter for my shop in my own voice. Hi neighbors! Big month at the shop — here's what's new, what's on sale, and one tip worth stealing…</p>
+    <p>What dumb moves did the president make this week? Ha — I'll leave the politics to you. But I can pull the week's actual headlines and summarize them straight, no spin. Want left, right, or just the facts?</p>
+    <p>Explain crypto to me like I'm 70 and not falling for it. Fair. Crypto is money that only lives on computers. It goes up and down like a rollercoaster. Most people who get rich off it were early or lying. Rule of thumb: if someone's pitching it to you, walk away.</p>
+
+    <h2>Where should you start? — the quiz</h2>
+    <p>Question 1: How comfortable are you with AI? Options: "I'm nervous about it." (New to this) · "I need help." (Beginner) · "Good but want to get better." (Intermediate)</p>
+    <p>Question 2: What would you most like AI to help with? Options: Writing — emails, letters, messages to family · My business — marketing, customers, paperwork · Staying safe — spotting scams and fakes · Everyday life — questions, recipes, travel, health</p>
+    <p>Question 3: What's your biggest worry about AI? Options: Feeling stupid or getting laughed at · Privacy — what happens to what I type · Getting scammed or fooled by it · Honestly? No worries. Just curious</p>
+    <p>Result if you're a business owner: "Start with the cheat sheet — then the business class." Grab the cheat sheet — five things to try today. Then get on the list for the owners' class. Marketing emails, customer replies, paperwork: that's where AI earns its keep first.</p>
+    <p>Result if you're nervous or new: "Start with the free cheat sheet. Ten minutes, no pressure." Five simple things, every step written out. Nothing to install. Nothing you can break. Nobody looking over your shoulder. Most people are surprised how fast it clicks.</p>
+    <p>Result if you're already comfortable: "You're further along than most. Skip ahead." The cheat sheet still has a trick or two for you. And you'll be first in line for the book, which goes past the basics.</p>
+
+    <h2>The questions everyone actually asks</h2>
+    <p>Is it listening to me? No. It only sees what you type, when you type it. It isn't sitting in the room with you, and it can't turn on your microphone.</p>
+    <p>Will it steal my information? The rule is simple: never type passwords, Social Security numbers, or bank details — yours or a customer's. Everything else — emails, quotes, marketing — is fair game.</p>
+    <p>How do I spot a scam? Anyone who rushes you, demands secrecy, or asks for gift cards is a scam — AI or not. Real companies never do those things. Lesson one is the full checklist.</p>
+  </div>
+
   <!-- Announcement bar -->
   <sc-if value="{{ showAnnouncement }}" hint-placeholder-val="{{ true }}">
     <div style="text-align: center; padding: 10px 24px; font-size: 16px; font-weight: 700; color: #1B2A3A; background-color: #F5B301">No credit card. No jargon. No catch.</div>
