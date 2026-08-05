@@ -1,0 +1,29 @@
+# AI Free for Boomers
+
+> Free, plain-English AI lessons for people who didn't grow up with a cell phone, and for the small-business owners who serve them. No jargon, no credit card, no scare tactics — just what to type and why.
+
+Run by Joshua (founder) and Fernando (co-founder). The whole approach: if you're confused, we explained it badly — not your fault.
+
+## Main pages
+
+- [Homepage](https://aifreeforboomers.com/): hero pitch, live demo of questions AI can answer, a 3-question quiz that points visitors to a starting place, and answers to the most common trust questions (privacy, scams, whether it's "listening").
+- [About](https://aifreeforboomers.com/about): who runs this and why it's free.
+- [Resources](https://aifreeforboomers.com/resources): index of the articles below.
+- [1-on-1 Help](https://aifreeforboomers.com/consulting): private paid sessions, no slides, no jargon.
+- [Cheat sheet](https://aifreeforboomers.com/cheat-sheet): a printable one-pager, "5 Things You Can Ask AI Today."
+
+## Articles
+
+- [What is AI, in Plain English?](https://aifreeforboomers.com/articles/what-is-ai)
+- [Your First Conversation With AI](https://aifreeforboomers.com/articles/first-conversation)
+- [How to Spot an AI Scam](https://aifreeforboomers.com/articles/spot-an-ai-scam)
+- [What to Never Type Into AI](https://aifreeforboomers.com/articles/what-to-never-type)
+- [Write a Marketing Email With AI](https://aifreeforboomers.com/articles/marketing-email)
+- [Recipes, Travel, and Health Questions](https://aifreeforboomers.com/articles/everyday-life)
+- [Using AI to Navigate Your Relationships](https://aifreeforboomers.com/articles/relationships)
+
+## The three questions people actually ask
+
+- **Is it listening to me?** No. It only sees what you type, when you type it. It isn't sitting in the room with you, and it can't turn on your microphone.
+- **Will it steal my information?** Never type passwords, Social Security numbers, or bank details — yours or a customer's. Everything else is fair game.
+- **How do I spot a scam?** Anyone who rushes you, demands secrecy, or asks for gift cards is a scam — AI or not.
