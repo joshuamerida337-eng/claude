@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# The form endpoint is not a page. It answers POST only and returns 405 to a
+# crawler, which Search Console reports as "Blocked due to other 4xx issue".
+Disallow: /api/
+
 Sitemap: https://aifreeforboomers.com/sitemap.xml

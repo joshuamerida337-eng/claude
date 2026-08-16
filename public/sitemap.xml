@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  These URLs must match the rel="canonical" tags and the URL the server
+  actually serves. Cloudflare serves these pages without the .html extension
+  and redirects the .html form, so listing .html here would hand Google a
+  redirect for every page.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aifreeforboomers.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://aifreeforboomers.com/about.html</loc><priority>0.8</priority></url>
-  <url><loc>https://aifreeforboomers.com/resources.html</loc><priority>0.8</priority></url>
-  <url><loc>https://aifreeforboomers.com/consulting.html</loc><priority>0.8</priority></url>
-  <url><loc>https://aifreeforboomers.com/articles/what-is-ai.html</loc><priority>0.6</priority></url>
-  <url><loc>https://aifreeforboomers.com/articles/first-conversation.html</loc><priority>0.6</priority></url>
-  <url><loc>https://aifreeforboomers.com/articles/spot-an-ai-scam.html</loc><priority>0.6</priority></url>
-  <url><loc>https://aifreeforboomers.com/articles/what-to-never-type.html</loc><priority>0.6</priority></url>
-  <url><loc>https://aifreeforboomers.com/articles/marketing-email.html</loc><priority>0.6</priority></url>
-  <url><loc>https://aifreeforboomers.com/articles/everyday-life.html</loc><priority>0.6</priority></url>
-  <url><loc>https://aifreeforboomers.com/articles/relationships.html</loc><priority>0.6</priority></url>
+  <url><loc>https://aifreeforboomers.com/about</loc><priority>0.8</priority></url>
+  <url><loc>https://aifreeforboomers.com/resources</loc><priority>0.8</priority></url>
+  <url><loc>https://aifreeforboomers.com/consulting</loc><priority>0.8</priority></url>
+  <url><loc>https://aifreeforboomers.com/articles/what-is-ai</loc><priority>0.6</priority></url>
+  <url><loc>https://aifreeforboomers.com/articles/first-conversation</loc><priority>0.6</priority></url>
+  <url><loc>https://aifreeforboomers.com/articles/spot-an-ai-scam</loc><priority>0.6</priority></url>
+  <url><loc>https://aifreeforboomers.com/articles/what-to-never-type</loc><priority>0.6</priority></url>
+  <url><loc>https://aifreeforboomers.com/articles/marketing-email</loc><priority>0.6</priority></url>
+  <url><loc>https://aifreeforboomers.com/articles/everyday-life</loc><priority>0.6</priority></url>
+  <url><loc>https://aifreeforboomers.com/articles/relationships</loc><priority>0.6</priority></url>
 </urlset>
